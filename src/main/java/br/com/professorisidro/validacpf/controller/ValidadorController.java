@@ -7,16 +7,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.professorisidro.validacpf.service.Validador;
 
-@RestController
+@RestController // quando tem @ é uma assinatura de metodo
 @CrossOrigin("*")
 public class ValidadorController {
-	
-	@GetMapping("/validacpf")
+
+	@GetMapping("/validacpf") // definindo uma rota o / depois do nome do site
 	public String validaCPF(@RequestParam String cpf) {
 		if (Validador.isCPF(cpf)) {
 			return "{\"status\": \"valido\"}";
 		}
-		 return "{\"status\": \"invalido\"}";
+		return "{\"status\": \"invalido\"}";
 	}
 
+	@GetMapping("/") // definindo uma rota
+	public String index() {
+		return "{\"mensagem\": \"bem vindo API turma7b\"}";
+	}
 }
